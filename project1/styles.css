@@ -16,11 +16,6 @@ body{
     font-family: sans-serif;
 }
 
-main{
-    width: 70vw;
-    margin: 0 auto;
-}
-
 .navbar{
     margin: 18px 0 18px 0;
     padding: 18px 0 18px 0;
@@ -41,7 +36,7 @@ main{
 
 .navbar ul li{
     list-style: none;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .nav-links{
@@ -50,7 +45,7 @@ main{
 }
 
 h1{
-    font-size: 102px;
+    font-size: 100px;
     color: var(--text-active-color);
 }
 
@@ -95,4 +90,56 @@ h1{
     padding-bottom: 50px;
     color: var(--text-opacity-color);
     font-size: 20px;
+}
+
+@media screen and (min-width: 700px){
+    main{
+        width: 720px;
+        margin: 0 auto;
+    }
+
+    .logo{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 620px){
+    main{
+        margin: 0 15px 0 15px;
+    }
+
+    .navbar{
+        margin: 18px 0 18px 0;
+        padding: 18px 0 18px 0;
+    }
+
+    .logo{
+        width: 48px;
+        height: 48px;
+    }
+
+    h1{
+        font-size: 48px;
+    }
+
+    .sub-title{
+        font-size: 17px;
+    }
+
+    .main-list ul li a{
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .main-list ul li a .date{
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    .copyright{
+        font-size: 15px;
+    }
 }
