@@ -234,3 +234,18 @@ ul.pagination li:nth-child(3){
     
     }
 }
+
+@media screen and (max-width: 360px){
+    .pagination{
+        gap: 15px;
+    }
+
+    .navbar ul li, .navbar p {
+        font-size: 9px;
+    }
+
+    .item-container{
+        flex-basis: 90%;
+    
+    }
+}
