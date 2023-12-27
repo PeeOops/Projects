@@ -1,14 +1,5 @@
 <?php
 
-$header = 'Home';
+require 'function.php';
 
-function dd($value){
-    echo '<pre>';
-    var_dump($value);
-    echo '</pre>';
-
-    die();
-}
-
-
-require 'views/index.view.php';
+require 'router.php';
