@@ -20,12 +20,12 @@ class Database {
     }
 
     // Method query
-    public function query($query){
+    public function query($query, $params = []){
 
 
         // Prepare a new query called $statement and execute
         $statement = $this->connection->prepare($query);
-        $statement->execute();
+        $statement->execute($params);
 
         // Fetch all the results
         return $statement;
