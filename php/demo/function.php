@@ -12,3 +12,9 @@ function dd($value){
 function checkUrl($value){
     return $_SERVER['REQUEST_URI'] === $value;
 }
+
+function auth($condition, $status = Response::FORBIDDEN){
+    if(!$condition){
+        abort($status);
+    }
+}

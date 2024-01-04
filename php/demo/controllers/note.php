@@ -14,15 +14,12 @@ $currentUserId = 1;
 // fetch = 1 record
 $note = $db->query('select * from notes where id = :id', [
     'id' => $_GET['id']
-])->fetch();
+])->findOrFail();
 
-if(!$note){
-    abort(Response::NOT_FOUND);
-}
+// Authentication
 
-if($note['user_id'] !== $currentUserId){
-    abort(Response::FORBIDDEN);
-}
+auth($note['user_id'] === $currentUserId);
+
 
 
 
