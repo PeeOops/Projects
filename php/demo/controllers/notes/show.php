@@ -1,12 +1,11 @@
 <?php
 
 
-$config = require('config.php');
+$config = require base_path('config.php');
 
 // New instance called $db from Database Class
 $db = new Database($config['database']);
 
-$header = 'Note';
 $currentUserId = 1;
 
 // Query
@@ -23,4 +22,7 @@ auth($note['user_id'] === $currentUserId);
 
 
 
-require 'views/notes/show.view.php';
+view('notes/show.view.php',[
+    'header' => 'Note',
+    'note' => $note
+]);
