@@ -3,11 +3,11 @@
 const BASE_PATH = __DIR__ . '/../';
 
 // Priority Set
-require BASE_PATH . 'function.php';
+require BASE_PATH . 'Core/function.php';
 
 spl_autoload_register(function ($class){
     require base_path("Core/{$class}.php");
 });
 
-require base_path('router.php');
+require base_path('Core/router.php');
 

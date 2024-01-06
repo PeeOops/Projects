@@ -11,8 +11,6 @@ $errors = [];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-
-
     // Static class "::"
     if(! Validator::string($_POST['body'],1,1000)){
         $errors['body'] = "Please check your input";
