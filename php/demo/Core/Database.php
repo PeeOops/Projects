@@ -1,5 +1,10 @@
 <?php
 
+// Namespace
+namespace Core;
+
+use PDO;
+
 // Connect to MySQL Database and execute a query
 // Create Database class
 class Database {
@@ -16,6 +21,12 @@ class Database {
 
         // New instance
         $this->connection = new PDO($dsn, $username, $password, [
+            // Put '\' for Global so it starts from root not namespace
+            // If there is no '\' it will read as Core/PDO
+            // First Version
+            // \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+
+            // Second Version using a Use Namespace
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }

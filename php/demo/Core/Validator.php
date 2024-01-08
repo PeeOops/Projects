@@ -1,5 +1,6 @@
 <?php
 
+namespace Core;
 
 class Validator{
     // Pure function to check whether the body value is empty with minimum and maximum value
