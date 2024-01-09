@@ -1,5 +1,6 @@
 <?php
 
+use Core\Router;
 const BASE_PATH = __DIR__ . '/../';
 
 // Priority Set
@@ -12,5 +13,17 @@ spl_autoload_register(function ($class){
     require base_path("{$class}.php");
 });
 
-require base_path('Core/router.php');
+// New instance class Router
+$router = new \Core\Router();
+
+$routes = require base_path('routes.php');
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+// Check method through view with unique name '_method' to pass DELETE, PATCH or PUT
+// Because Form can only pass POST and GET request
+$method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
+
+$router->route($uri, $method);
+
+
 

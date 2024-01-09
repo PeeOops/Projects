@@ -14,6 +14,14 @@ function checkUrl($value){
     return $_SERVER['REQUEST_URI'] === $value;
 }
 
+function abort($status = 404){
+    http_response_code($status);
+
+    require base_path("views/{$status}.php");
+
+    die();
+}
+
 function auth($condition, $status = Response::FORBIDDEN){
     if(!$condition){
         abort($status);
