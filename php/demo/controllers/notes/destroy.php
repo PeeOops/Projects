@@ -9,23 +9,20 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 
 $currentUserId = 1;
-// Query
-// Declare id using superglobal $_GET['id']
-// fetch = 1 record
+
 $note = $db->query('select * from notes where id = :id', [
-    'id' => $_GET['id']
+    'id' => $_POST['id']
 ])->findOrFail();
 
 // Authentication
 
 auth($note['user_id'] === $currentUserId);
 
-
-
-
-view('notes/show.view.php',[
-    'header' => 'Note',
-    'note' => $note
+$note = $db->query('delete from notes where id = :id', [
+    'id' => $_GET['id']
 ]);
+
+header('location: /notes');
+exit();
 
 
