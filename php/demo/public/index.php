@@ -5,6 +5,7 @@ const BASE_PATH = __DIR__ . '/../';
 
 // Priority Set
 require BASE_PATH . 'Core/function.php';
+require base_path('bootstrap.php');
 
 spl_autoload_register(function ($class){
     // Core\Database
