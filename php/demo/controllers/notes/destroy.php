@@ -1,12 +1,12 @@
 <?php
 
-use Core\Database;
+use Core\App;
 use Core\Response;
+use Core\Database;
 
-$config = require base_path('config.php');
+// Container App that resolve Database
+$db = App::resolve(Database::class);
 
-// New instance called $db from Database Class
-$db = new Database($config['database']);
 
 $currentUserId = 1;
 

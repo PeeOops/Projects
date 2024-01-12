@@ -1,5 +1,6 @@
 <?php
 
+
 use Core\App;
 use Core\Database;
 use Core\Response;
@@ -18,12 +19,8 @@ $note = $db->query('select * from notes where id = :id', [
 
 auth($note['user_id'] === $currentUserId);
 
-
-
-
-view('notes/show.view.php',[
-    'header' => 'Note',
+view('notes/edit.view.php',[
+    'header' => 'Edit Note',
+    'errors' => [],
     'note' => $note
 ]);
-
-

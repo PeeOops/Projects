@@ -1,11 +1,11 @@
 <?php
 
+
 use Core\Router;
 const BASE_PATH = __DIR__ . '/../';
 
 // Priority Set
 require BASE_PATH . 'Core/function.php';
-require base_path('bootstrap.php');
 
 spl_autoload_register(function ($class){
     // Core\Database
@@ -15,6 +15,7 @@ spl_autoload_register(function ($class){
 });
 
 // New instance class Router
+require base_path('bootstrap.php');
 $router = new \Core\Router();
 
 $routes = require base_path('routes.php');

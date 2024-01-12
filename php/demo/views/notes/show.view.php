@@ -13,6 +13,10 @@
         </p>
         <p><?= htmlspecialchars($note['body'])  ?></p>
 
+        <footer class="mt-6">
+            <a href="/note/edit?id=<?= $note['id'] ?>" class="text-green-500 border border-current px-4 py-2 rounded">Edit</a>
+        </footer>
+
         <form class="mt-6" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="id" value="<?= $note['id'] ?>">
