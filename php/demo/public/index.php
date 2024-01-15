@@ -1,8 +1,9 @@
 <?php
 
-
 use Core\Router;
 const BASE_PATH = __DIR__ . '/../';
+
+session_start();
 
 // Priority Set
 require BASE_PATH . 'Core/function.php';

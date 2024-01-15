@@ -15,6 +15,6 @@ class Validator{
     public static function email($value){
         // Validator::email('example@gmail.com')
 
-        filter_var($value, FILTER_VALIDATE_EMAIL);
+        return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
 }
