@@ -45,13 +45,11 @@ if($user){
     // if no, save account to the database and login then redirect
     $db->query("INSERT INTO users(email,password) VALUES (:email, :password) ",[
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password,PASSWORD_BCRYPT) // Hashing
     ]);
 
-    // Create user session
-    $_SESSION['user'] = [
-      'email' => $email
-    ];
+    // Login session
+    login($user);
 
     header('location: /');
     exit();

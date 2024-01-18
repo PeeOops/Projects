@@ -37,3 +37,30 @@ function view($path, $attributes = []){
     extract($attributes);
     require base_path('views/' . $path);
 }
+
+function login($user){
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+
+    // Generate session id - but not necessary
+
+    session_regenerate_id(true);
+
+}
+
+function logout(){
+    // 1. Clear out the superglobal session
+    $_SESSION = [];
+    // 2. Destroy the session
+    session_destroy();
+
+    // 3. Set the cookies
+        // Cookie Path & domain
+
+    $params = session_get_cookie_params();
+
+        // Set the cookie
+    setcookie('PHPSESSID', '', time() - 3600, $params['path'] , $params['domain'], $params['secure'], $params['httponly']);
+
+}

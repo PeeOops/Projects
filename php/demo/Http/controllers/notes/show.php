@@ -6,7 +6,7 @@ use Core\Response;
 
 $db = App::resolve(Database::class);
 
-$currentUserId = 1;
+$currentUserId = $user['id'];
 // Query
 // Declare id using superglobal $_GET['id']
 // fetch = 1 record
