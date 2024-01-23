@@ -2,31 +2,36 @@
 
 use Http\forms\LoginForm;
 use Core\Authenticator;
+use Core\Session;
 
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+$auth = new Authenticator();
+
 // 1. Validation
 $form = new LoginForm();
 if(!$form->validate($email, $password)){
-    return view('sessions/create.view.php',[
-        'errors' => $form->errors
-    ]);
+    // 2. Authentication
+    if($auth->attempt($email, $password)){
+        redirect('/');
+    }
+    // 3. Error Validation
+    $form->error('email','Please check your data');
+    $form->error('password','Please check your data');
+
 }
 
+// 4. Session Flashing
+Session::flash('errors',$form->errors());
 
-// 2. Authentication
-$auth = new Authenticator();
+// 5. Redirect
+return redirect('/login');
 
-if($auth->attempt($email, $password)){
-    redirect('/');
-}else{
-    view('sessions/create.view.php',[
-        'errors' => [
-            'email' => 'Check your email address',
-            'password' => 'Check your password'
-        ]
-    ]);
-}
+
+// return view('sessions/create.view.php',[
+//     'errors' => $form->errors
+// ]);
+
 

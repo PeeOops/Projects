@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Session;
+
 class Authenticator{
 
     public function login($user){
@@ -16,18 +18,7 @@ class Authenticator{
     }
     
     public function logout(){
-        // 1. Clear out the superglobal session
-        $_SESSION = [];
-        // 2. Destroy the session
-        session_destroy();
-    
-        // 3. Set the cookies
-            // Cookie Path & domain
-    
-        $params = session_get_cookie_params();
-    
-            // Set the cookie
-        setcookie('PHPSESSID', '', time() - 3600, $params['path'] , $params['domain'], $params['secure'], $params['httponly']);
+        Session::destroy();
     
     }
 
