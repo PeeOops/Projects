@@ -1,0 +1,41 @@
+Notes:
+1. "$this" or "this" method is used to call a local variable where it is needed to be access by outside function
+
+Example:
+
+<!-- We declare a new private routes with empty array -->
+private $routes = [];
+
+<!-- Make a  new function called get that accept 2 default parameters $uri and $controller to return routes-->
+public function get($uri = '/',$controller = 'index.php'){
+    $this->routes[] = [
+        'uri' => $uri,
+        'controller' => $controller
+    ]
+
+    return $this;
+}
+
+<!-- make a function called router to show the routes and return an array -->
+public function router(){
+    foreach($this->routes as $route){
+        return $route;
+    }
+}
+
+
+
+
+
+
+Routing Steps:
+
+1. New file call "routes.php"
+    - To accept uri and controller
+    example:
+    $router->get('/','index.php');
+    = Class name router with a method GET where the uri is '/' and controller 'index.php'
+
+2. New file call "router.php" in Core
+    - To make methods like GET,POST,DELETE,PUT,PATCH
+    
