@@ -18,16 +18,11 @@ spl_autoload_register(function ($path){
 
 // New class Router
 $router = new Router();
-
 // Access routes file
 $routes = require base_path('routes.php');
-
-// $router->route();
-
-
-// Temporary routing
-if($_SERVER['REQUEST_URI'] === '/'){
-  require base_path('views/index.view.php');
-};
+// Define the uri
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+// route method
+$router->route($uri);
 
 

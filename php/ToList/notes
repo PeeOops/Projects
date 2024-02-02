@@ -32,10 +32,44 @@ Routing Steps:
 
 1. New file call "routes.php"
     - To accept uri and controller
-    example:
+    Ex:
     $router->get('/','index.php');
     = Class name router with a method GET where the uri is '/' and controller 'index.php'
 
 2. New file call "router.php" in Core
-    - To make methods like GET,POST,DELETE,PUT,PATCH
+    - To make methods like GET,POST,DELETE,PUT,PATCH that accept $uri and $controller parameters based on routes.php
+    Ex:
+    public function get($uri,$controller){
+        <!-- To save routes in an array that save uri and controller-->
+        $this->routes[] = [
+        'uri' => $uri,
+        'controller' => $controller
+       ];
+       <!-- return the routes -->
+       <!-- in this case the 'uri' => '/' and 'controller' => 'index.php' -->
+       return $this;
+    }
+    - A method called route that accept "uri" and "method" parameters
+    Ex:
+    public function route($uri){
+        <!-- Loop to grab the routes as route -->
+        foreach($this->routes as $route){
+            <!-- make a check if $route['uri'] === $uri from parameter -->
+            if($route['uri'] === $uri){
+                <!-- If its true, return the controller -->
+                <!-- In this case my controller directory is in Http\Controllers -->
+                return require base_path('Http/controllers/' . $route['controller']);
+            }
+        }
+    }
+
+    - Then the execution in index.php
+    <!-- New class Router nb: dont forget the use namespace -->
+    $router = new Router();
+    <!-- Access routes.php -->
+    $routes = require base_path('routes.php');
+    <!-- declare the $uri -->
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    <!-- execute route method -->
+    $router->route($uri);
     
