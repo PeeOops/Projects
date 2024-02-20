@@ -6,7 +6,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-          <a href="#" class="text-white rounded-md px-3 py-2 text-xl font-medium">ToList</a>
+          <a href="/" class="text-white rounded-md px-3 py-2 text-xl font-medium">ToList</a>
           </div>
         </div>
         <div class="hidden md:block">
