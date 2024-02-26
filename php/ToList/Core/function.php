@@ -23,6 +23,8 @@ function abort($status = 404){
     die();
 }
 
-function view($path){
-    require base_path("views/{$path}");
+function view($path, $attributes = []){
+
+    extract($attributes);
+    require base_path('views/' . $path);
 }
