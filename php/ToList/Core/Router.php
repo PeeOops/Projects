@@ -5,36 +5,37 @@ namespace Core;
 class Router{
     private $routes = [];
 
-    public function get($uri,$controller){
-       $this->routes[] = [
-        'uri' => $uri,
-        'controller' => $controller
-       ];
+    public function add($uri, $controller, $method){
+        //        [] = Append
+        $this->routes[] = [
+            'uri' => $uri,
+            'controller' => $controller,
+            'method' => $method,
+            'middleware' => null
+        ];
 
-       return $this;
+        return $this;
+    }
+    public function get($uri, $controller){
+        return $this->add($uri,$controller,'GET');
     }
 
     public function post($uri, $controller){
-        $this->routes[] = [
-        'uri' => $uri,
-        'controller' => $controller
-       ];
-
-       return $this;
-
+        return $this->add($uri,$controller,'POST');
     }
 
     public function delete($uri, $controller){
-
+        return $this->add($uri,$controller,'DELETE');
     }
 
-    public function put(){
-
+    public function patch($uri, $controller){
+        return $this->add($uri,$controller,'PATCH');
     }
 
-    public function patch(){
-
+    public function put($uri, $controller){
+        return $this->add($uri,$controller,'PUT');
     }
+
 
     public function route($uri){
         foreach($this->routes as $route){

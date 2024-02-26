@@ -7,7 +7,7 @@
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div class="grid-cols-3"></div>
         <h3 class="tracking-normal font-bold text-xl">What's on Your Mind?</h3>
-        <form>
+        <form method="post" action="/task/store">
             <div class="space-y-12">
                 <div class="border-b border-gray-900/10 pb-12">
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -20,9 +20,9 @@
                             </div>
                         </div>
                         <div class="sm:col-span-4">
-                            <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Date</label>
+                            <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Date</label>
                             <div class="mt-2">
-                                <input type="text" name="title" id="title"
+                                <input datepicker type="text" name="date" id="date"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="When?">
                             </div>
