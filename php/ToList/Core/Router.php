@@ -37,15 +37,17 @@ class Router{
     }
 
 
-    public function route($uri){
-        foreach($this->routes as $route){
-            if($route['uri'] === $uri){
-                // Grab the controller directory
+    public function route($uri, $method)
+    {
+        foreach($this->routes as $route) {
+            if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+
+
                 return require base_path('Http/controllers/' . $route['controller']);
             }
         }
-        
-        abort();
+
+        $this->abort();
     }
 
 }
